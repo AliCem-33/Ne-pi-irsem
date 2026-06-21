@@ -2,32 +2,122 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ne Pişirsem?</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+text-align:center;
+padding:20px;
+}
+
+h1{
+color:#ff6600;
+}
+
+button{
+padding:12px 20px;
+margin:8px;
+border:none;
+border-radius:10px;
+background:#ff6600;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+opacity:0.9;
+}
+
+#sonuc{
+margin-top:20px;
+font-size:22px;
+font-weight:bold;
+color:#333;
+}
+
+.kategori{
+margin-top:20px;
+}
+</style>
 </head>
+
 <body>
 
-<h1>Ne Pişirsem Uygulaması 🍽️</h1>
+<h1>🍽️ Ne Pişirsem?</h1>
 
-<button onclick="yemekSec()">Bana yemek öner</button>
+<p>Bugün ne yiyeceğine karar veremiyor musun?</p>
 
-<p id="sonuc">Henüz seçim yapılmadı.</p>
+<button onclick="yemekOner()">Bana Yemek Öner</button>
+
+<div class="kategori">
+<h3>Kategoriler</h3>
+
+<button onclick="kategoriSec('ev')">Ev Yemeği</button>
+
+<button onclick="kategoriSec('fastfood')">Fast Food</button>
+
+<button onclick="kategoriSec('tatli')">Tatlı</button>
+</div>
+
+<div id="sonuc"></div>
 
 <script>
-function yemekSec() {
-  const yemekler = [
-    "Makarna 🍝",
-    "Menemen 🍳",
-    "Pilav 🍚",
-    "Köfte 🍖",
-    "Çorba 🥣",
-    "Tost 🥪"
-  ];
+const yemekler = [
+"Pizza",
+"Hamburger",
+"Döner",
+"Lahmacun",
+"Mantı",
+"Menemen",
+"Kuru Fasulye",
+"Pilav",
+"Adana Kebap"
+];
 
-  const secilen =
-    yemekler[Math.floor(Math.random() * yemekler.length)];
+const kategoriler = {
+ev:[
+"Menemen",
+"Kuru Fasulye",
+"Pilav",
+"Mantı",
+"Mercimek Çorbası"
+],
+fastfood:[
+"Pizza",
+"Hamburger",
+"Döner",
+"Tost",
+"Çiğ Köfte"
+],
+tatli:[
+"Baklava",
+"Sütlaç",
+"Künefe",
+"Dondurma",
+"Profiterol"
+]
+};
 
-  document.getElementById("sonuc").innerText =
-    "Bugün: " + secilen;
+function yemekOner(){
+const secilen =
+yemekler[Math.floor(Math.random()*yemekler.length)];
+
+document.getElementById("sonuc").innerHTML =
+"🍴 Önerim: <b>"+secilen+"</b>";
+}
+
+function kategoriSec(kategori){
+const liste = kategoriler[kategori];
+
+const secilen =
+liste[Math.floor(Math.random()*liste.length)];
+
+document.getElementById("sonuc").innerHTML =
+"🍽️ Kategori Önerisi: <b>"+secilen+"</b>";
 }
 </script>
 

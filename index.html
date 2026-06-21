@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Ne Pişirsem?</title>
+</head>
+<body>
+
+<h1>Ne Pişirsem Uygulaması 🍽️</h1>
+
+<button onclick="yemekSec()">Bana yemek öner</button>
+
+<p id="sonuc">Henüz seçim yapılmadı.</p>
+
+<script>
+function yemekSec() {
+  const yemekler = [
+    "Makarna 🍝",
+    "Menemen 🍳",
+    "Pilav 🍚",
+    "Köfte 🍖",
+    "Çorba 🥣",
+    "Tost 🥪"
+  ];
+
+  const secilen =
+    yemekler[Math.floor(Math.random() * yemekler.length)];
+
+  document.getElementById("sonuc").innerText =
+    "Bugün: " + secilen;
+}
+</script>
+
+</body>
+</html>
